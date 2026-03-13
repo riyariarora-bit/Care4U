@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Care4U</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --primary-light: #c4b5fd;
+            --primary-dark: #6d28d9;
+            --accent: #ec4899;
+            --accent-light: #f9a8d4;
+            --bg-dark: #0f172a;
+            --white: #ffffff;
+            --text-main: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #0f172a 100%);
+        }
+
+        .shape {
+            position: absolute;
+            filter: blur(80px);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: move 25s infinite alternate ease-in-out;
+        }
+
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            top: -150px;
+            right: -100px;
+        }
+
+        .shape-2 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(-45deg, var(--accent), #3b82f6);
+            bottom: -200px;
+            left: -150px;
+            animation-delay: -7s;
+        }
+
+        .shape-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-light);
+            top: 40%;
+            left: 30%;
+            opacity: 0.2;
+            animation-duration: 30s;
+        }
+
+        @keyframes move {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            50% { transform: translate(100px, 50px) scale(1.1) rotate(45deg); }
+            100% { transform: translate(-50px, 100px) scale(0.9) rotate(-45deg); }
+        }
+
+        .auth-card-wrapper {
+            position: relative;
+            padding: 2px;
+            background: linear-gradient(135deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+            border-radius: 50px;
+            animation: borderRotate 6s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .auth-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 48px;
+            padding: 64px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes revealUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal-1 { animation-delay: 0.2s; }
+        .reveal-2 { animation-delay: 0.3s; }
+        .reveal-3 { animation-delay: 0.4s; }
+        .reveal-4 { animation-delay: 0.5s; }
+        .reveal-5 { animation-delay: 0.6s; }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 24px;
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
+            display: inline-block;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .login-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            background: linear-gradient(to right, #fff, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .login-header p {
+            opacity: 0.6;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            opacity: 0.5;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+            padding-left: 4px;
+        }
+
+        .input-wrap {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 6px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrap:focus-within {
+            border-color: var(--primary);
+            background: rgba(139, 92, 246, 0.05);
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+            transform: scale(1.02);
+        }
+
+        .input-wrap input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 14px 24px;
+            color: white;
+            font-family: inherit;
+            font-size: 1.05rem;
+            outline: none;
+        }
+
+        .btn-login {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 24px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: 16px;
+            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-login:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 20px 35px -10px rgba(139, 92, 246, 0.6);
+            filter: brightness(1.1);
+        }
+
+        .btn-login:active {
+            transform: translateY(-2px) scale(0.99);
+        }
+
+        .auth-footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+
+        .auth-footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .auth-footer a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .error-msg {
+            background: rgba(239, 68, 68, 0.1);
+            color: #fca5a5;
+            padding: 16px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 28px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        @media (max-width: 540px) {
+            .auth-card {
+                padding: 48px 24px;
+                margin: 20px;
+                border-radius: 40px;
+            }
+            .login-header h1 { font-size: 2.2rem; }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="bg-shapes">
+        <div class="shape shape-1" data-speed="0.05"></div>
+        <div class="shape shape-2" data-speed="-0.03"></div>
+        <div class="shape shape-3" data-speed="0.02"></div>
+    </div>
+
+    <div class="auth-card-wrapper reveal">
+        <div class="auth-card">
+            <div class="lang-selector reveal reveal-1" style="position: absolute; top: 40px; right: 40px; z-index: 100;">
+                <select onchange="window.location.href='/set_language/' + this.value"
+                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 8px 16px; border-radius: 12px; cursor: pointer;">
+                    <option value="en" {% if current_lang=='en' %}selected{% endif %}>English</option>
+                    <option value="zh" {% if current_lang=='zh' %}selected{% endif %}>中国人</option>
+                    <option value="es" {% if current_lang=='es' %}selected{% endif %}>Español</option>
+                    <option value="fr" {% if current_lang=='fr' %}selected{% endif %}>Français</option>
+                </select>
+            </div>
+            <div class="login-header reveal reveal-2">
+                <div class="logo">💊</div>
+                <h1>Care4U</h1>
+                <p>Your Intelligent Healthcare Companion</p>
+            </div>
+
+            <form action="/login" method="POST">
+                <div class="form-group reveal reveal-3">
+                    <label>Username</label>
+                    <div class="input-wrap">
+                        <input type="text" name="username" placeholder="Enter your username" required>
+                    </div>
+                </div>
+
+                <div class="form-group reveal reveal-4">
+                    <label>Password</label>
+                    <div class="input-wrap">
+                        <input type="password" name="password" placeholder="********" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login reveal reveal-5">Sign In</button>
+            </form>
+
+            {% if error %}
+            <div class="error-msg reveal">{{ error }}</div>
+            {% endif %}
+
+            <div class="auth-footer reveal reveal-5">
+                Don't have an account? <a href="/signup">Create one for free</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const x = (window.innerWidth - e.pageX * 2) / 100;
+            const y = (window.innerHeight - e.pageY * 2) / 100;
+
+            shapes.forEach(shape => {
+                const speed = shape.getAttribute('data-speed');
+                shape.style.transform = `translateX(${x * speed * 10}px) translateY(${y * speed * 10}px)`;
+            });
+        });
+    </script>
+</body>
+
+</html>
