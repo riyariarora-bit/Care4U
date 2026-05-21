@@ -1,0 +1,121 @@
+{
+    "Riya-21": {
+        "name": "Riya Arora",
+        "password": "Ycis2017",
+        "age": "22",
+        "gender": "Female",
+        "blood_group": null,
+        "weight": null,
+        "height": null,
+        "email": null,
+        "phone": null,
+        "email_alerts": "off",
+        "sms_alerts": "off",
+        "trustee_alerts": "on",
+        "trustee_email": "guardian@example.com",
+        "trustee_name": "Guardian"
+    },
+    "test_doctor": {
+        "name": "Dr. House",
+        "password": "hashed_password",
+        "role": "doctor",
+        "specialization": "General Practitioner",
+        "city": "New York",
+        "license": "MED001",
+        "patients": [
+            "test_patient"
+        ]
+    },
+    "test_patient": {
+        "name": "John Doe",
+        "password": "hashed_password",
+        "role": "patient",
+        "doctor_connected": "test_doctor"
+    },
+    "pending_patient": {
+        "name": "Jane Smith",
+        "password": "hashed_password",
+        "role": "patient",
+        "pending_doctor_request": "test_doctor",
+        "pending_summary": {
+            "disease": "Flu",
+            "urgency": "Medium"
+        }
+    },
+    "SocialGuest": {
+        "name": "Riya Arora",
+        "password": "$2b$12$Lkq4jfsCwXHBSAuaDkHzxuL0iBlZ1/IYOfrvqMZrKx/oCJ/FDQlJa",
+        "age": "22",
+        "gender": "Female",
+        "blood_group": "B+",
+        "weight": "64",
+        "height": "175",
+        "email": "riyariarora@gmail.com",
+        "phone": "+919319560680",
+        "city": "Delhi",
+        "role": "patient",
+        "email_alerts": "off",
+        "sms_alerts": "off",
+        "joined_on": "Mar 2026",
+        "doctor_connected": null,
+        "pending_doctor_request": null,
+        "trustee_name": "",
+        "trustee_email": "",
+        "trustee_phone": "",
+        "trustee_alerts": "off"
+    },
+    "dr_smith": {
+        "name": "Dr. Smith",
+        "password": "pass",
+        "role": "doctor",
+        "specialization": "General Physician",
+        "city": "New Delhi",
+        "license": "MED123",
+        "patients": []
+    },
+    "dr_jones": {
+        "name": "Dr. Jones",
+        "password": "pass",
+        "role": "doctor",
+        "specialization": "Cardiologist",
+        "city": "Mumbai",
+        "license": "MED456",
+        "patients": []
+    },
+    "dr_patel": {
+        "name": "Dr. Patel",
+        "password": "pass",
+        "role": "doctor",
+        "specialization": "Neurologist",
+        "city": "New Delhi",
+        "license": "MED789",
+        "patients": []
+    },
+    "dr_gupta": {
+        "name": "Dr. Gupta",
+        "password": "pass",
+        "role": "doctor",
+        "specialization": "Gastroenterologist",
+        "city": "Delhi",
+        "license": "MED101",
+        "patients": []
+    },
+    "dr_sharma": {
+        "name": "Dr. Sharma",
+        "password": "pass",
+        "role": "doctor",
+        "specialization": "Endocrinologist",
+        "city": "Pune",
+        "license": "MED202",
+        "patients": []
+    },
+    "dr_reddy": {
+        "name": "Dr. Reddy",
+        "password": "pass",
+        "role": "doctor",
+        "specialization": "Orthopedist",
+        "city": "New Delhi",
+        "license": "MED303",
+        "patients": []
+    }
+}

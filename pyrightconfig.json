@@ -1,0 +1,7 @@
+{
+    "venvPath": ".",
+    "venv": ".venv",
+    "typeCheckingMode": "off",
+    "pythonVersion": "3.14",
+    "pythonPlatform": "Windows"
+}
